@@ -10,7 +10,7 @@
       "DEFAULT_PLACE": "<+pipeline.variables.default_place>",
       "UNITS": "<+pipeline.variables.units>",
       "DEPLOY_ENV": "<+pipeline.variables.deploy_env>",
-      "METEOSOURCE_API_KEY": "PLACEHOLDER"
+      "METEOSOURCE_API_KEY": "<+pipeline.variables.meteosource_api_key>"
     }
   }
 }
