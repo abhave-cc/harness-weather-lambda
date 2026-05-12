@@ -1,0 +1,16 @@
+{
+  "functionName": "harness-weather-lambda",
+  "runtime": "python3.12",
+  "handler": "app.lambda_handler",
+  "memorySize": 128,
+  "timeout": 15,
+  "role": "arn:aws:iam::469740788063:role/harness-trg-lambda-execution",
+  "environment": {
+    "variables": {
+      "DEFAULT_PLACE": "<+pipeline.variables.default_place>",
+      "UNITS": "<+pipeline.variables.units>",
+      "DEPLOY_ENV": "<+pipeline.variables.deploy_env>",
+      "METEOSOURCE_API_KEY": "<+secrets.getValue(\"meteosource_api_key\")>"
+    }
+  }
+}
