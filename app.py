@@ -2,6 +2,7 @@ import json
 import os
 import urllib.parse
 import urllib.request
+import urllib.error
 
 
 def _response(status_code, body):
@@ -52,6 +53,14 @@ def lambda_handler(event, context):
             "place": place,
             "summary": f"{place}: {temperature}°C, {summary}, wind {wind} km/h.",
             "raw_current": current
+        })
+
+    except urllib.error.HTTPError as exc:
+        error_body = exc.read().decode("utf-8", errors="replace")
+        return _response(exc.code, {
+            "place": place,
+            "error": f"HTTP Error {exc.code}: {exc.reason}",
+            "meteosource_response": error_body
         })
 
     except Exception as exc:
