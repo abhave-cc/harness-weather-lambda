@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Harness Weather Demo</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div id="app">
+
+  <div class="header">
+    <h1>Weather Demo</h1>
+    <div id="envBadge">ENV</div>
+  </div>
+
+  <div id="versionBanner"></div>
+
+  <div class="search">
+    <input type="text" id="placeInput" placeholder="Enter location">
+    <button onclick="getWeather()">Get Weather</button>
+  </div>
+
+  <div class="quickButtons">
+    <button onclick="quickPlace('London')">London</button>
+    <button onclick="quickPlace('Mumbai')">Mumbai</button>
+    <button onclick="quickPlace('New York')">New York</button>
+    <button onclick="quickPlace('Tokyo')">Tokyo</button>
+  </div>
+
+  <div id="loading" class="hidden">
+    Loading weather...
+  </div>
+
+  <div id="weatherCard" class="hidden">
+    <div id="icon"></div>
+    <div id="temperature"></div>
+    <div id="summary"></div>
+    <div id="wind"></div>
+
+    <hr>
+
+    <div id="metadata"></div>
+  </div>
+
+</div>
+
+<script src="app.js"></script>
+
+</body>
+</html>
