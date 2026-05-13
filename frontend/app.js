@@ -1,4 +1,4 @@
-const API_URL = "YOUR_LAMBDA_FUNCTION_URL";
+const API_URL = "https://sis7aflfqci5tepm5z7bakixuq0nelpj.lambda-url.eu-west-2.on.aws/";
 
 async function getWeather(placeOverride=null) {
 
