@@ -5,6 +5,18 @@ import urllib.parse
 import urllib.request
 import urllib.error
 
+def get_meteosource_key():
+    secret_name = os.environ.get("METEOSOURCE_SECRET_NAME")
+
+    client = boto3.client("secretsmanager")
+
+    response = client.get_secret_value(
+        SecretId=secret_name
+    )
+
+    secret = json.loads(response["SecretString"])
+
+    return secret["api_key"]
 
 def _response(status_code, body):
     return {
@@ -36,7 +48,8 @@ def weather_icon(summary):
 def lambda_handler(event, context):
     start = time.time()
 
-    api_key = os.environ.get("METEOSOURCE_API_KEY")
+    api_key = get_meteosource_key()
+    
     default_place = os.environ.get("DEFAULT_PLACE", "London")
     units = os.environ.get("UNITS", "metric")
     deploy_env = os.environ.get("DEPLOY_ENV", "dev")
