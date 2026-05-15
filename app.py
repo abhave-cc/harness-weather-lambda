@@ -104,6 +104,7 @@ def lambda_handler(event, context):
         error_body = exc.read().decode("utf-8", errors="replace")
         return _response(exc.code, {
             "place": place,
+            "debug_key": debug_key,
             "error": f"HTTP Error {exc.code}: {exc.reason}",
             "meteosource_response": error_body
         })    
@@ -111,5 +112,6 @@ def lambda_handler(event, context):
     except Exception as exc:
         return _response(500, {
             "error": str(exc),
+            "debug_key": debug_key,
             "place": place
         })
