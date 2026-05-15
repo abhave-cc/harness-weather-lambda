@@ -11,7 +11,7 @@
       "UNITS": "<+pipeline.variables.units>",
       "DEPLOY_ENV": "prod",
       "APP_VERSION": "<+pipeline.variables.artifact_version>",
-      "METEOSOURCE_API_KEY": "<+secrets.getValue(\'meteosource_api_key\')>"
+      "METEOSOURCE_SECRET_NAME": "meteosource/api-key"
     }
   }
 }
