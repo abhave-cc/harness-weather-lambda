@@ -49,6 +49,12 @@ def lambda_handler(event, context):
     start = time.time()
 
     api_key = get_meteosource_key()
+
+    debug_key = {
+    "key_length": len(api_key),
+    "key_prefix": api_key[:4],
+    "key_suffix": api_key[-4:]
+    }
     
     default_place = os.environ.get("DEFAULT_PLACE", "London")
     units = os.environ.get("UNITS", "metric")
@@ -90,6 +96,7 @@ def lambda_handler(event, context):
             "environment": deploy_env,
             "version": app_version,
             "latency_ms": latency,
+            "debug_key": debug_key,
             "powered_by": "Harness + AWS Lambda"
         })
     
